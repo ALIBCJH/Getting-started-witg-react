@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
+
 const pizzaData = [
   {
     name: "Focaccia",
@@ -22,7 +24,7 @@ const pizzaData = [
     ingredients: "Whet with sour milk and gem",
     photoName: "./crispy-mixed-pizza-with-olives-sausage.jpg",
     price: 200,
-    soldOut: true,
+    soldOut: false,
   },
 
   {
@@ -46,6 +48,7 @@ const pizzaData = [
     ingredients: "Bread with Italian Oil",
     photoName: "./ivan-torres-MQUqbmszGGM-unsplash.jpg",
     price: 200,
+    soldOut: false,
   },
   {
     name: "Calzone",
@@ -54,55 +57,61 @@ const pizzaData = [
     price: 200,
     soldOut: false,
   },
-  {
-    name: "Pizzarina",
-    ingridients: "Wheat , Barley and oil",
-    PhotoName: "/pizzas/aurelien-lemasson-theobald-x00CzBt4Dfk-unsplash.jpg",
-  },
 ];
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
+      <Pizza />
       <Footer />
     </div>
-  );
-}
-function Header() {
-  return <h1>Fast React Pizza Co</h1>;
-}
-
-function Menu() {
-  return (
-    <div>
-      <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
-    </div>
-  );
-}
-
-function Footer() {
-  return (
-    <footer>{new Date().toLocaleTimeString()}. We are currently open </footer>
   );
 }
 
 function Pizza() {
   return (
-    <div>
-      <img
-        src="./aurelien-lemasson-theobald-x00CzBt4Dfk-unsplash.jpg"
-        alt="Pizza spinaci"
-      />
+    <div className="images">
+      <img src="pizzas/image7.jpg" />
       <h2>Pizza Spinaci</h2>
-      <p>Bread with italian Oil</p>
+      <p>Bread with Italian Oil</p>
     </div>
+  );
+}
+
+function Header() {
+  return <h1 className="header">Fast React Pizza Co.</h1>;
+}
+
+function Menu() {
+  return (
+    <div className="Menu">
+      <h2>Our Menu</h2>
+    </div>
+  );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closingHour = 11;
+  const isOpen = hour >= hour <= closingHour;
+  console.log(isOpen);
+  //if (hour >= openHour) alert("We are currently open!!");
+  //else {
+  //alert("The store is currently closed");
+
+  return (
+    <footer>{new Date().toLocaleTimeString()}. We are currently open </footer>
   );
 }
 
